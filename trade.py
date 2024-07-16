@@ -47,7 +47,7 @@ privatekey ='<privatekey>'
 denominatedInSol = 'true'
 custom_tip=0.002
 custom_slippage = 10
-pool = 'raydium'
+pool = 'raydium' #problem occurs also setting pool to pump
 
 tx = execute_trade(action, amount, TOKEN_TO_SWAP, publickey, privatekey, denominatedInSol, custom_tip, custom_slippage, pool)
 print(tx)
