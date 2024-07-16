@@ -28,6 +28,21 @@ class PriceInfo:
         return PriceInfo(price, lp, liquidity, last_update_unix, last_update_human)
 
 
+def get_token_info_pump(token_address):
+    url = f"https://gmgn.ai/defi/quotation/v1/tokens/sol/{token_address}"
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raises an HTTPError for bad responses
+        data = response.json()
+        print(data)
+        return data
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching data: {e}")
+    return None
+    
 def return_liquidity(token_address):
     token_info = get_token_info_pump(token_address)
     data = token_info.get('data', {})
